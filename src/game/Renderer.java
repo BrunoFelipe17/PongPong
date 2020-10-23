@@ -10,7 +10,7 @@ import game.keyboard.KeyBoard;
 
 public class Renderer {
 
-    private static GLWindow window = null;
+    private static final GLWindow window = null;
     private static int screenWidth = 0;
     private static int screenHeight = 0;
 

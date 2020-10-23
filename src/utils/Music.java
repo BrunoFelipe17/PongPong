@@ -13,9 +13,8 @@ public class Music {
             public void run() {
                 try {
                     Clip clip = AudioSystem.getClip();
-                    String workingDir = System.getProperty("user.dir");
                     AudioInputStream inputStream = AudioSystem.getAudioInputStream(
-                            new File(workingDir + "\\audio\\batida.wav"));
+                            new File(Constants.soundHitBall));
                     clip.open(inputStream);
                     clip.start();
                 } catch (Exception e) {
@@ -32,7 +31,7 @@ public class Music {
                     Clip clip = AudioSystem.getClip();
                     String workingDir = System.getProperty("user.dir");
                     AudioInputStream inputStream = AudioSystem.getAudioInputStream(
-                            new File(workingDir + "\\audio\\intro.wav"));
+                            new File(Constants.soundIntro));
                     clip.open(inputStream);
                     FloatControl gainControl
                             = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
@@ -53,7 +52,7 @@ public class Music {
                     Clip clip = AudioSystem.getClip();
                     String workingDir = System.getProperty("user.dir");
                     AudioInputStream inputStream = AudioSystem.getAudioInputStream(
-                            new File(workingDir + "\\audio\\lossLive.wav"));
+                            new File(Constants.soundLossLive));
                     clip.open(inputStream);
                     
                     clip.start();
@@ -71,7 +70,7 @@ public class Music {
                     Clip clip = AudioSystem.getClip();
                     String workingDir = System.getProperty("user.dir");
                     AudioInputStream inputStream = AudioSystem.getAudioInputStream(
-                            new File(workingDir + "\\audio\\hitWall.wav"));
+                            new File(Constants.soundHitWall));
                     clip.open(inputStream);
                     
                     clip.start();

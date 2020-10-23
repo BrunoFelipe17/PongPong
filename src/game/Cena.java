@@ -11,11 +11,16 @@ import game.scenes.PhaseTwo;
 import utils.Constants;
 import utils.Music;
 import utils.Physics;
+import utils.Textures;
 
 public class Cena implements GLEventListener {
 
     public static GL2 gl;
     public static GLUT glut;
+    public static Textures textures;
+    private int filtro = GL2.GL_LINEAR; ////GL_NEAREST ou GL_LINEAR
+    private int wrap = GL2.GL_REPEAT;  //GL.GL_REPEAT ou GL.GL_CLAMP
+    private int modo = GL2.GL_DECAL; ////GL.GL_MODULATE ou GL.GL_DECAL ou GL.GL_BLEND
 
     public int tonalizacao = GL2.GL_SMOOTH;
 
@@ -28,12 +33,21 @@ public class Cena implements GLEventListener {
     public void init(GLAutoDrawable drawable) {
         gl = drawable.getGL().getGL2();
         Physics.randomRunBall();
+        textures = new Textures(Constants.totalTextures);
+        textures.setAutomatica(false);
+
+        //configura os filtros
+        textures.setFiltro(filtro);
+        textures.setModo(modo);
+        textures.setWrap(wrap);
+        
         menu = new Menu();
         phaseOne = new PhaseOne();
         phaseTwo = new PhaseTwo();
         gameOver = new GameOver();
         gl.glEnable(GL2.GL_DEPTH_TEST);
         Music.soundIntro();
+        System.out.println("rodei");
     }
 
     @Override
@@ -89,6 +103,7 @@ public class Cena implements GLEventListener {
 
     @Override
     public void dispose(GLAutoDrawable drawable) {
+        System.out.println("dispose carai");
     }
 
     public void iluminacaoAmbiente(GL2 gl) {
