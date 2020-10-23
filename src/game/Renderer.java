@@ -32,7 +32,7 @@ public class Renderer {
         Cena cena = new Cena();
         window.addGLEventListener(cena);
         window.addKeyListener(new KeyBoard(cena));
-
+        window.addMouseListener(new KeyBoard(cena));
         //window.requestFocus();
         FPSAnimator animator = new FPSAnimator(window, 60);
         animator.start();

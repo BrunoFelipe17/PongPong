@@ -5,13 +5,14 @@ import java.util.Locale;
 public class Physics {
 
     private static boolean touchedTheBar(float ballX) {
-        float leftBarLimit = Float.parseFloat(String.format(Locale.US, "%.1f", Constants.move - 0.2f));
-        float rightBarLimit = Float.parseFloat(String.format(Locale.US, "%.1f", Constants.move + 0.2f));
-        return leftBarLimit <= ballX && rightBarLimit >= ballX;
+        Constants.leftBarLimit = Float.parseFloat(String.format(Locale.US, "%.1f", Constants.move - 0.2f));
+        Constants.rightBarLimit = Float.parseFloat(String.format(Locale.US, "%.1f", Constants.move + 0.2f));
+        return Constants.leftBarLimit <= ballX && Constants.rightBarLimit >= ballX;
 
     }
 
     private static boolean limitY(float x, float y, float xPoint) {
+
         return 0.5f >= y && -0.1f <= y && x == xPoint;
     }
 
@@ -26,27 +27,27 @@ public class Physics {
         if (Constants.phase == 2 && Constants.xDirection == 'l'
                 && limitY(xTransBallFixed, yTransBallFixed, 0.2f)) {
             Constants.xDirection = 'r';
-            System.out.println("bati 1");
+//            System.out.println("bati 1");
             Music.soundHitWall();
         }
-        
+
         // LADO ESQUERDO OBSTACULO
         if (Constants.phase == 2 && Constants.xDirection == 'r'
                 && limitY(xTransBallFixed, yTransBallFixed, -0.2f)) {
             Constants.xDirection = 'l';
-            System.out.println("bati 2");
+//            System.out.println("bati 2");
             Music.soundHitWall();
-            
+
         } else if (xTransBallFixed > -1f && Constants.xDirection == 'l') {
             Constants.ballX -= Constants.speed / 2;
-            
+
         } else if (xTransBallFixed == -1f && Constants.xDirection == 'l') {
             // COLISÃO LADO ESQUERDO DA TELA
             Music.soundHitWall();
             Constants.xDirection = 'r';
         } else if (xTransBallFixed < 1f && Constants.xDirection == 'r') {
             Constants.ballX += Constants.speed / 2;
-            
+
         } else if (xTransBallFixed == 1f && Constants.xDirection == 'r') {
             // COLISÃO LADO DIREITO DA TELA
             Music.soundHitWall();
@@ -57,7 +58,7 @@ public class Physics {
                 && limitX(xTransBallFixed, yTransBallFixed, -0.2f)) {
             Constants.yDirection = 'd';
             // BAIXO OBSTACULO
-            System.out.println("bati 3");
+//            System.out.println("bati 3");
             Music.soundHitWall();
         } else if (Constants.phase == 2 && Constants.yDirection == 'd'
                 && limitX(xTransBallFixed, yTransBallFixed, 0.2f)) {

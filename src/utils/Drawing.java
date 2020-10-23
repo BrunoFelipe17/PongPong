@@ -23,6 +23,7 @@ public class Drawing {
         gl.glPushMatrix();
         gl.glColor3f(r, g, b);
         gl.glTranslatef(Constants.move, 0, 0);
+        gl.glRotatef(Constants.angle, 0, 1, 0);
         gl.glBegin(GL2.GL_QUADS);
         
         gl.glVertex2f(-0.2f, -0.8f);

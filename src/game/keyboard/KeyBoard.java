@@ -1,19 +1,25 @@
 package game.keyboard;
+
 import com.jogamp.newt.event.KeyEvent;
 import com.jogamp.newt.event.KeyListener;
+import com.jogamp.newt.event.MouseEvent;
+import com.jogamp.newt.event.MouseListener;
 import game.Cena;
+import game.Renderer;
 import utils.Constants;
 
-public class KeyBoard implements KeyListener{
+public class KeyBoard implements KeyListener, MouseListener {
+
     private final Cena cena;
-    
-    public KeyBoard(Cena cena){
+    private int previousX = 0;
+
+    public KeyBoard(Cena cena) {
         this.cena = cena;
     }
-    
-   @Override
+
+    @Override
     public void keyPressed(KeyEvent e) {
-        
+
         switch (e.getKeyCode()) {
             case KeyEvent.VK_ESCAPE:
                 System.exit(0);
@@ -52,7 +58,55 @@ public class KeyBoard implements KeyListener{
     }
 
     @Override
-    public void keyReleased(KeyEvent e) { }
-    
-    
+    public void keyReleased(KeyEvent e) {
+    }
+
+    @Override
+    public void mouseMoved(MouseEvent e) {
+        if (e.getX() != 0) {
+            if (e.getX() < previousX && Constants.move > -0.9) {
+                Constants.move = Constants.move - 0.02f;
+            } else if (e.getX() > previousX && Constants.move < 0.9) {
+                Constants.move = Constants.move + 0.02f;
+            }
+        }
+        previousX = e.getX();
+
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseDragged(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseWheelMoved(MouseEvent e) {
+
+    }
+
 }

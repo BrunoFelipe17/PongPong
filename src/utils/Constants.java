@@ -2,7 +2,7 @@ package utils;
 
 public class Constants {
     public static boolean pause =  false;
-    public static int score = 0;
+    public static int score = 300;
     public static int phase = 2;
     public static int lives = 50;
     public static float speed = 0.02f;
@@ -13,4 +13,7 @@ public class Constants {
     public static float ballY = 1f;
     public static char xDirection;
     public static char yDirection = 'd';
+    public static float leftBarLimit;
+    public static float rightBarLimit;
+    public static float angle;
 }
