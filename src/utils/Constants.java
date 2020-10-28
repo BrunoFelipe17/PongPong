@@ -4,7 +4,7 @@ public class Constants {
     public static boolean pause =  false;
     public static int score = 0;
     public static int phase = 0;
-    public static int lives = 1;
+    public static int lives = 5;
     public static float speed = 0.02f;
     public static float move = 0;
     public static float livesAnimation = 0;
